@@ -113,9 +113,9 @@ author:
   location         : "South Korea"
   # email            : "hyeyoomj@naver.com"
   links:
-    - label: "Email"
-      icon: "fas fa-fw fa-envelope-square"
-      url: mailto:hyeyoomj@naver.com
+    # - label: "Email"
+    #   icon: "fas fa-fw fa-envelope-square"
+    #   url: mailto:hyeyoomj@naver.com
     - label: "Blog"
       icon: "fas fa-fw fa-link"
       url: "https://blog.naver.com/hyeyoomj"
