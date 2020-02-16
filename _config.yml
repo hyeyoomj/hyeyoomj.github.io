@@ -111,17 +111,17 @@ author:
   avatar           : "/assets/images/profile.JPG" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : "생각하고 이야기하고 코딩하는 개발자 혜윰"
   location         : "South Korea"
-  email            : "hyeyoomj@naver.com"
+  # email            : "hyeyoomj@naver.com"
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
       url: mailto:hyeyoomj@naver.com
-    - label: "Website"
+    - label: "Blog"
       icon: "fas fa-fw fa-link"
-      url: "https://hyeyoomj.github.io/"
-    - label: "Facebook"
-      icon: "fab fa-fw fa-facebook-square"
-      # url: "https://facebook.com/"
+      url: "https://blog.naver.com/hyeyoomj"
+    # - label: "Facebook"
+    #   icon: "fab fa-fw fa-facebook-square"
+    #   # url: "https://facebook.com/"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/hyeyoomj"
@@ -135,9 +135,12 @@ footer:
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/hyeyoomj"
-    - label: "Instagram"
-      icon: "fab fa-fw fa-instagram"
-      url: "https://instagram.com/heyo_om"
+    - label: "Email"
+      icon: "fas fa-fw fa-envelope-square"
+      url: mailto:hyeyoomj@naver.com
+    # - label: "Instagram"
+    #   icon: "fab fa-fw fa-instagram"
+    #   url: "https://instagram.com/heyo_om"
 
 
 # Reading Files
