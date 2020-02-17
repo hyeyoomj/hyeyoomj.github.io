@@ -1,9 +1,15 @@
 ---
-title: "About Yoomlog"
+title: "About Yoom"
 permalink: /about/
 layout: single
 ---
 
-## hyeyoomj.github.io 블로그
+## JUNG HYEYOOM
+<br />
+<img src="/images/yoom2.jpeg" width="300px" height="300px" alt="hyeyoom"></img>
+<br/>
 
-이 블로그는 정혜윰의 이런저런 개발 이야기를 담는 블로그이다.
+- - -
+### 🎓 [Handong Global University](https://www.handong.edu/)
+#### 👩🏻‍💻 Student in [CSEE](http://csee.handong.edu/)
+#### 🔬 [BCI Lab](https://bcilab.handong.edu/)
