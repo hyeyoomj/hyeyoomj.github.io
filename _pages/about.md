@@ -3,7 +3,6 @@ title: "About"
 permalink: /about/
 layout: single
 ---
-<center>
 
 ## JUNG HYEYOOM
 <img src="/assets/images/yoom2.jpeg" width="230px" height="230px" alt="hyeyoom">
