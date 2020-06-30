@@ -25,7 +25,6 @@ OpenCV란 오픈소스 컴퓨터 비전 라이브러리로, 공통 API를 사용
 
 시작하기 앞서, 해당 게시물은 본인이 이 책을 읽으면서 openCV의 기본 개념 정리와 새롭게 알게 된 내용을 정리하는 게시물임을 알려 드린다. 상세한 코드 설명이나 예제 모두를 다루는 것은 아니며, 핵심 코드의 일부와 사용 방법을 다루고 모든 코드는 c++을 사용한다.
 
-------------
 
 ## 이미지 연산
 
@@ -55,7 +54,7 @@ addWeighted(img1, alpha, img2, beta, 0, dst) ;
 ```
 subtract(img_object, img_background, dst_sub) ;
 ```
-이때 객체가 있는 이미지에서 객체가 없는 이미지를 빼야 한다. **순서** 를 헷갈리지 않도록 한다.
+이때 객체가 있는 이미지에서 객체가 없는 이미지를 빼야 한다. **순서** 를 헷갈리지 않도록 한다.<br>
 이 차영상을 아래와 같이 이진화하면 더 좋은 결과를 얻을 수 있다.
 
 <p align="center">
@@ -108,14 +107,14 @@ cvtColor(img_edge, img_edge, COLOR_GRAY2BGR) ;
 img_edge.copyTo(img(Rect(center_x - 100, center_y - 100, 200, 200))) ;
 ```
 
-이미지의 일부(중심점으로부터 일정부분)를 ROI 설정하고, 그 영역에만 grayscale로 변환 후 캐니 에지를 구한다.
+이미지의 일부(중심점으로부터 일정부분)를 ROI 설정하고, 그 영역에만 grayscale로 변환 후 캐니 에지를 구한다.<br>
 이후 변환한 ROI를 다시 컬러로 변환하여 (사이즈와 채널 수를 맞춰야 하기 때문에) 원본에 복사해서 보여주는 예제이다.
 
-## 관심영역 roi
+## 관심영역 ROI
 위에서 본 것과 같이, 이미지의 일부를 지정하는 것을 ROI, Region of Interest 라고 한다. ROI를 추출해 해당 영역에만 다양하게 함수나 연산을 적용할 수가 있다. 이렇듯 이미지의 일부를 사이즈와 좌표로 추출할 수도 있지만, 마우스를 사용해 사용자가 직접 추출할 수도 있다.
 
 ### 실시간 ROI
-웹캠 영상에 마우스를 사용하여 실시간으로 ROI를 검출하는 예제를 보겠다.
+웹캠 영상에 마우스를 사용하여 실시간으로 ROI를 검출하는 예제를 보겠다.<br>
 마우스 이벤트가 발생하면 *mouse_callback* 함수를 호출하고, 해당 함수는 아래와 같이 커서의 위치를 스텝별로 계산해 ROI 영역의 시작점과 끝점을 지정한다.
 
 ```
@@ -155,13 +154,13 @@ Mat ROI(img, Rect(start_x, start_y, end - x-start_x, end_y - start_y)) ;
 
 ## 이미지 기하학적 변환
 
-이미지의 기하학적 변환은 함수로 간단하게 구현이 가능하다.
+이미지의 기하학적 변환은 함수로 간단하게 구현이 가능하다.<br>
 이미지의 회전, 크기 조정과 이동, 변환을 다루는 함수가 openCV로 지원이 되므로, 해당 함수들에 대해 간단하게 사용방법을 알아보고 넘어가도록 하겠다.
 
 
 ### 회전
 
-회전 행렬을 사용하여 이미지를 회전시킬 수 있다. openCV에서는 *getRotationMatrix2D* 함수를 사용해 회전 행렬을 생성하고, *warpAffine* 함수를 사용하여 이미지에 회전 변환을 적용한다.
+회전 행렬을 사용하여 이미지를 회전시킬 수 있다.<br> openCV에서는 *getRotationMatrix2D* 함수를 사용해 회전 행렬을 생성하고, *warpAffine* 함수를 사용하여 이미지에 회전 변환을 적용한다.
 
 ```
 Mat M = getRotationMatrix2D(
@@ -177,7 +176,7 @@ warpAffine(img, img_rotated, M, Size(width, height)) ;
 ```
 
 ### 크기 조정
-이미지의 크기는 *resize* 함수를 사용하여 조정할 수 있다.
+이미지의 크기는 *resize* 함수를 사용하여 조정할 수 있다.<br>
 이때 보간법 interpolation methods 을 지정해 줄 수 있는데, 지정해주지 않았을 때의 디폴트 값은 INTER_LINEAR이다. 확대할 시에는 INTER_CUBIC 혹은 INTER_LINEAR을, 축소할 시에는 INTER_AREA 를 권장한다.
 
 ```
@@ -188,7 +187,7 @@ resize(img, dst, Size(0.5 * width, 0.5 * height), INTER_AREA) ;
 ```
 
 ### 이동
-이미지의 모든 점을 같은 방향으로 이동시키는 변환을 이동 translation으로 부른다.
+이미지의 모든 점을 같은 방향으로 이동시키는 변환을 이동 translation으로 부른다.<br>
 이동 시에는 이동행렬을 만들어 이미지에 적용하면 된다.
 
 ```
@@ -208,8 +207,12 @@ warpAffine(img, img_translated, M, Size(width, height)) ;
 아핀 변환이란, 쉽게 말하면 이미지의 세 점을 찍어 그 세 점을 움직이는데, 이때 세 움직이는 위치는 대응하는 도형의 평행하게 움직여야 하는 것이다. 이미지로 보면 이해가 쉬울 것이다.
 
 <p align="center">
-  <img src="/assets/images/results/affine.png" width="300px" height="400px">
+  <img src="/assets/images/results/affine.png" width="500px" height="300px">
 </p>
+
+
+2D 평면에서, 임의의 삼각형을 또 다른 임의의 삼각형으로 매핑시킬 수 있는 변환이 affine이라고 생각하면 조금 더 이해가 갈 것이다. (단, **평행성을 보존하면서**)<br>
+평행성을 보존한다는 것은 위 그림과 같이 점 p1, p2, p3를 p1', p2', p3'으로 매핑시키는 affine 변환을 구했을 때, 이 affine 변환을 가지고 p4를 매핑시키면 p4'이 나와야 한다는 의미라고 보면 된다.
 
 이 변환 역시 *getAffineTransform* 함수를 사용해 변환행렬을 만들어 쉽게 변환이 가능하다.
 
@@ -225,14 +228,14 @@ warpAffine(img, img_affine, M, Size(width, height)) ;
 ```
 
 ### 퍼스펙티브 변환 Perspective Transformation
-퍼스펙티브 변환이란, 원본 이미지의 모든 직선은 출력 이미지에서도 직선으로 유지된 채로 변환하는 것을 말한다. 입력 이미지의 네 점과 대응하는 출력 이미지의 네 점이 필요하다.
+퍼스펙티브 변환이란, 원본 이미지의 모든 직선은 출력 이미지에서도 직선으로 유지된 채로 변환하는 것을 말한다. 입력 이미지의 네 점과 대응하는 출력 이미지의 네 점이 필요하다.<br>
 아래 그림과 같이, 일상생활에서도 쉽게 이 변환의 예를 찾아볼 수 있다.
 
 <p align="center">
   <img src="/assets/images/results/perspective.png" width="450px" height="350px">
 </p>
 
-마찬가지로 src의 점을 지정해서 적당히 변환 후 dst의 점으로 넣어주는데, 이때 보통 이미지가 똑바르게 보이도록 하기 위해 이미지의 네 모서리, 즉 (0,0), (width,0), (0,height), (width,height) 를 지정해준다. 그 후 퍼스펙티브 변환 행렬을 생성하고, warp함수로 적용시키면 된다.
+마찬가지로 src의 점을 지정해서 적당히 변환 후 dst의 점으로 넣어주는데,<br> 이때 보통 이미지가 똑바르게 보이도록 하기 위해 이미지의 네 모서리, 즉 (0,0), (width,0), (0,height), (width,height) 를 지정해준다. 그 후 퍼스펙티브 변환 행렬을 생성하고, warp함수로 적용시키면 된다.
 
 ```
 Point2f dst[4] ; // 변환된 이미지의 점 위치 지정
@@ -243,5 +246,5 @@ warpPerspective(img, img_result, M, Size(width, height)) ;
 ```
 
 -----
-여기까지 이미지에 연산과 기하학적 변환을 주는 방법을 알아보았다.
+여기까지 이미지에 연산과 기하학적 변환을 주는 방법을 알아보았다.<br>
 다음 장에서는 이미지의 블러링, 모폴로지, 허프 변환과 히스토그램을 알아보도록 하겠다.
