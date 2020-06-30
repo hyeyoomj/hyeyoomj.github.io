@@ -34,8 +34,8 @@ openCV에서는 이미지의 왼쪽 위에 원점(0,0)이 위치하고, 한 픽�
 컬러 이미지에서는 각 픽셀이 **(Blue, Green, Red)** 세개의 채널을 가지며, 이를 Gray Scale로 변환하면 하나의 채널을 갖는 픽셀로 구성된다. 이진화된 이미지 (Binary Image)에서는 모든 픽셀이 0 또는 255의 값을 갖게 된다.
 
 <p align="center">
-  <img src="/assets/images/grayscale.png" width="230px" height="230px" alt="grayscale">
-  <img src="/assets/images/color.png" width="330px" height="250px" alt="color">
+  <img src="/assets/images/grayscale.png" width="330px" height="330px" alt="grayscale">
+  <img src="/assets/images/color.png" width="430px" height="330px" alt="color">
 </p>
 
 ### Mat 객체

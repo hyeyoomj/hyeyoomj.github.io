@@ -9,6 +9,7 @@ tags:
   - c++
   - python
   - computervision
+  - roi
 
 last_modified_at: 2020-06-30T08:06:00-05:00
 
@@ -42,9 +43,9 @@ addWeighted(img1, alpha, img2, beta, 0, dst) ;
 ```
 
 <p align="center">
-  <img src="/assets/images/results/blending1.png" width="300px" height="200px">
+  <img src="/assets/images/results/blending1.png" width="400px" height="300px">
   alpha = 0.2, beta = 0.8
-  <img src="/assets/images/results/blending2.png" width="300px" height="200px">
+  <img src="/assets/images/results/blending2.png" width="400px" height="300px">
   alpha = 0.7, beta = 0.3
 </p>
 
@@ -58,7 +59,7 @@ subtract(img_object, img_background, dst_sub) ;
 이 차영상을 아래와 같이 이진화하면 더 좋은 결과를 얻을 수 있다.
 
 <p align="center">
-  <img src="/assets/images/results/subtraction.png" width="400px" height="200px">
+  <img src="/assets/images/results/subtraction.png" width="500px" height="300px">
 </p>
 
 ```
@@ -83,7 +84,7 @@ bitwise_not(img_mask, img_mask_inv) ;
 이런 식으로 한 결과는 아래와 같이 나온다. 이를 이용해 여러 실생활 디자인에도 적용해 볼 수 있겠다.
 
 <p align="center">
-  <img src="/assets/images/results/bitwise.png" width="400px" height="230px">
+  <img src="/assets/images/results/bitwise.png" width="500px" height="330px">
 </p>
 
 
@@ -228,7 +229,7 @@ warpAffine(img, img_affine, M, Size(width, height)) ;
 아래 그림과 같이, 일상생활에서도 쉽게 이 변환의 예를 찾아볼 수 있다.
 
 <p align="center">
-  <img src="/assets/images/results/perspective.png" width="350px" height="250px">
+  <img src="/assets/images/results/perspective.png" width="450px" height="350px">
 </p>
 
 마찬가지로 src의 점을 지정해서 적당히 변환 후 dst의 점으로 넣어주는데, 이때 보통 이미지가 똑바르게 보이도록 하기 위해 이미지의 네 모서리, 즉 (0,0), (width,0), (0,height), (width,height) 를 지정해준다. 그 후 퍼스펙티브 변환 행렬을 생성하고, warp함수로 적용시키면 된다.
