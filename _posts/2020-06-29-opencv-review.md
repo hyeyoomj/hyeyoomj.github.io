@@ -3,12 +3,15 @@ title:  "openCV 프로그래밍 - 기본 이론 및 이미지 객체 사용"
 excerpt: "알짜배기 예제로 배우는 openCV - 1"
 
 categories:
-  -
+  - openCV
 tags:
   - openCV
   - c++
   - python
   - computervision
+
+last_modified_at: 2019-06-29T08:06:00-05:00
+
 ---
 
 # 알짜배기 예제로 배우는 openCV - 1
@@ -33,7 +36,7 @@ openCV에서는 이미지의 왼쪽 위에 원점(0,0)이 위치하고, 한 픽�
   <img src="/assets/images/color.png" width="330px" height="250px" alt="color">
 </p>
 
-#### Mat 객체
+### Mat 객체
 openCV 상에서, 이미지는 Mat 객체에 저장된다. (c++의 경우) (python의 경우 numpy를 사용한다)
 아래와 같이 Mat 객체를 생성해서 사용하는데, 이때 이 이미지를 copy 한 이미지의 경우, 한 이미지에 변경되는 모든 속성들이 동일하게 적용됨을 유의해야 한다.
 
@@ -69,3 +72,22 @@ Mat img_result ;
 merge(channels, img_result) ; // 나눈 채널 합치기
 ~~~
 컬러 이미지를 split 함수를 사용해 채널 별로 분리하고, 채널별 이미지를 channels로 할당해 원하는대로 바꾼 다음, merge 함수로 합쳐 결과를 만든다.
+
+### 영상 다루기
+
+openCV 에서 영상은, **연속적인 이미지** 로 다루어진다. 아래와 같이, 이미지를 윈도우에 보여주는 작업을 반복하여 화면에 영상으로 보여지도록 한다.
+
+~~~
+Mat img_frame ;
+VideoCapture cap(0) ;
+while (1) {
+  cap.read(img_frame) ;
+  imshow("video", img_frame) ;
+  if (waitKey(1) == 27)
+}
+~~~
+
+이런 식으로 카메라에서 이미지 캡쳐와 윈도우에 이미지 보여주기를 반복하여 동영상으로 보이게 하는 것이다.
+
+---------
+여기까지 openCV 에서 가장 기본적인 이미지와 영상을 다루는 법을 익혔다. 다음 장에서는 이미지에 다양한 연산과 함수들을 적용시켜 보도록 하겠다.
