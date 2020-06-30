@@ -55,7 +55,7 @@ blur(img, dst, Size(5,5)) ;
 
 그렇기 때문에 가우시안 블러링은 에지가 선명하게 보이는 상태로 블러 처리가 되고, 따라서 보통 에지 검출 전 노이즈를 제거하기 위해 사용된다.
 
-~~~C++
+~~~c++
 GaussianBlur(img, dst, Size(5,5), 0) ;
 ~~~
 
@@ -67,7 +67,8 @@ GaussianBlur(img, dst, Size(5,5), 0) ;
 소벨 마스크 Gx는 수직 성분 에지를 검출, Gy는 수평 성분 에지를 검출하기 때문에 두 마스크를 결합하여 결과를 도출한다.
 
 이때, 에지 검출을 위해서는 이미지가 **grayscale** 이어야 함을 유의한다 !
-~~~C++
+
+~~~c++
 Mat img, sobel_x ;
 Sobel(img, sobel_x, CV_64F, 1, 0, 3) ;
 convertScaleAbs(sobel_x, sobel_x) ;
@@ -75,7 +76,7 @@ convertScaleAbs(sobel_x, sobel_x) ;
 
 이와 같이 `y`에 대한 소벨 마스크도 구한 뒤, 이를 `addWeighted` 함수를 사용해 더해 결과 이미지를 도출한다.<br>(책에서는 `addWeighted` 를 사용했으나, 가중치 없이 그냥 `add` 를 사용해도 무방)
 
-~~~C++
+~~~c++
 addWeighted(sobel_x, 1, sobel_y, 1, 0, dst) ;
 ~~~
 
@@ -96,7 +97,7 @@ addWeighted(sobel_x, 1, sobel_y, 1, 0, dst) ;
 ### Erosion
 Erosion은 흰 오브젝트의 외곽 픽셀을 검정색으로 만들어 노이즈(흰색 작은 물체)를 제거하고, 붙어있는 오브젝트를 분리하는 데 주로 쓰인다. 커널의 사이즈와 반복의 정도를 조절하는 방법은 아래와 같다.
 
-~~~C++
+~~~c++
 Mat kernel = getStructuringElement(MORPH_RECT, Size(3,3)) ;
 erode(img_gray, img_result, kernel, Point(-1,-1), 1) ;
 ~~~
@@ -111,7 +112,7 @@ erode(img_gray, img_result, kernel, Point(-1,-1), 1) ;
 ### Dilation
 Dilation은 erosion과 반대로, 흰 오브젝트의 외곽 픽셀 주변을 흰색으로 만들어서 erosion 이후 작아진 오브젝트를 원래대로 돌리거나, 인접해 있는 오브젝트를 연결해 하나로 만드는 데 주로 쓰인다. 커널의 사이즈와 반복의 정도를 조절하는 방법은 아래와 같다.
 
-~~~C++
+~~~c++
 Mat kernel = getStructuringElement(MORPH_RECT, Size(3,3)) ;
 dilate(img_gray, img_result, kernel, Point(-1,-1), 1) ;
 ~~~
@@ -128,7 +129,7 @@ Erosion 이후 Dilation을 적용하는 것이다.<br>
 **노이즈를 제거하는 데** 주로 사용된다. Erosion을 통해 노이즈를 제거하면 오브젝트 자체도 줄어들게 되는데, 이를 다시 dilation으로 늘리는 방식이다.
 사용법과 결과는 아래와 같다.
 
-~~~C++
+~~~c++
 Mat kernel = getStructuringElement(MORPH_RECT, Size(3,3)) ;
 morphologyEx(img_gray, img_result, MORPH_OPEN, kernel) ;
 ~~~
@@ -142,7 +143,7 @@ Dilation 이후 Erosion을 적용하는 것이다.<br>
 **흰 오브젝트 상의 작은 구멍을 메꾸는 데** 주로 사용된다.
 사용법과 결과는 아래와 같다.
 
-~~~C++
+~~~c++
 Mat kernel = getStructuringElement(MORPH_RECT, Size(11,11)) ;
 morphologyEx(img_gray, img_result, MORPH_CLOSE, kernel) ;
 ~~~
