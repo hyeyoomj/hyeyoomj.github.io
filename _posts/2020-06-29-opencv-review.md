@@ -63,6 +63,7 @@ for (int y = 0; y < height; y++) {
 
 * 채널 분리 및 합치기
 컬러 이미지를 각 R, G, B 채널로 나눌 수도 있다.
+
 ~~~
 Mat img_channels[3] ; // 배열에 b, g, r 순으로 채널이 저장됨
 split(img_color, img_channels) ; // 채널 나누기
@@ -71,6 +72,7 @@ vector<Mat> channels ;
 Mat img_result ;
 merge(channels, img_result) ; // 나눈 채널 합치기
 ~~~
+
 컬러 이미지를 split 함수를 사용해 채널 별로 분리하고, 채널별 이미지를 channels로 할당해 원하는대로 바꾼 다음, merge 함수로 합쳐 결과를 만든다.
 
 ### 영상 다루기
